@@ -24,6 +24,15 @@ public class User {
 
 	private HashMap<String, Integer> activity_count;
 	
+	public HashMap<String, Integer> getActivity_count() {
+		return activity_count;
+	}
+
+
+	public void setActivity_count(HashMap<String, Integer> activity_count) {
+		this.activity_count = activity_count;
+	}
+
 	private Document doc;
 	
 	public User(String name) {
