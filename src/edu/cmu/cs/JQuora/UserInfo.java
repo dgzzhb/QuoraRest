@@ -10,6 +10,7 @@ package edu.cmu.cs.JQuora;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,14 +23,14 @@ public class UserInfo {
 	private String last_name;
 	private String first_name;
 
-	private HashMap<String, Integer> activity_count;
+	private LinkedHashMap<String, Integer> activity_count;
 	
-	public HashMap<String, Integer> getActivity_count() {
+	public LinkedHashMap<String, Integer> getActivity_count() {
 		return activity_count;
 	}
 
 
-	public void setActivity_count(HashMap<String, Integer> activity_count) {
+	public void setActivity_count(LinkedHashMap<String, Integer> activity_count) {
 		this.activity_count = activity_count;
 	}
 
@@ -57,7 +58,7 @@ public class UserInfo {
 			
 			System.out.println(last_name + " " + first_name);
 			
-			activity_count = new HashMap<String, Integer>() {{
+			activity_count = new LinkedHashMap<String, Integer>() {{
 				put("Questions", 0);
 				put("Answers", 0);
 				put("Posts", 0);
