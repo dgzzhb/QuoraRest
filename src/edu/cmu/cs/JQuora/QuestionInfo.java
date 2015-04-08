@@ -18,33 +18,33 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class Question {
-	String url;
-	HashMap<String, String> question;
+public class QuestionInfo {
+	public String url;
+	public HashMap<String, String> questionMap;
 	// List of answers
 	
-	public Question(String name) throws IOException {
+	public QuestionInfo(String name) throws IOException {
 		this.url = new String("https://www.quora.com/" + name);
-		this.question = new HashMap<String, String>();
+		this.questionMap = new HashMap<String, String>();
 		
 		Document doc = Jsoup.connect(url).get();
 		// Parse title
 		String title = doc.title();
 		title = title.substring(0, title.length() - 8);
-		question.put("title", title);
+		questionMap.put("title", title);
 		
 		// Parse want answers 
 		Element QuestionFooter = doc.select("div.action_bar_inner").first();
 		String wantAnswer = QuestionFooter.select("span.count").first().text();
 //		// Seperate digits and letters
 //		wantAnswer = wantAnswer.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1];
-		question.put("wantAnswer", wantAnswer);
+		questionMap.put("wantAnswer", wantAnswer);
 		
 		// Parse number of answers
 		Element answerCount = doc.select("a.active").first();
-		question.put("answerCount", answerCount.text().split(" ")[0]);
+		questionMap.put("answerCount", answerCount.text().split(" ")[0]);
 			
-		System.out.println(question);
+		System.out.println(questionMap);
 	}
 	
 	// Get Answer from Specific Author
@@ -87,7 +87,7 @@ public class Question {
 	}
 
 	public static void main(String[] args) throws IOException {
-		Question question = new Question("Are-all-the-U-S-Presidents-related-to-each-other");
+		QuestionInfo question = new QuestionInfo("Are-all-the-U-S-Presidents-related-to-each-other");
 		question.getAnswerByAuthor("Brian-Roemmele");
 	}
 }
