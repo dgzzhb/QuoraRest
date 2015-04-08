@@ -15,7 +15,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-public class User {
+public class UserInfo {
 	private String user_name;
 	private String url;
 	
@@ -35,7 +35,7 @@ public class User {
 
 	private Document doc;
 	
-	public User(String name) {
+	public UserInfo(String name) {
 		user_name = name;
 		url = "http://www.quora.com/" + user_name;
 		doc = null;
@@ -98,7 +98,7 @@ public class User {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		User user = new User("Gang-Wu");
+		UserInfo user = new UserInfo("Gang-Wu");
 		user.init();
 		
 	}

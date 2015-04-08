@@ -11,13 +11,13 @@ import javax.ws.rs.core.MediaType;
 import edu.cmu.cs.JQuora.*;
 
 @Path("UserInfoService")  
-public class UserInfo {  
+public class User {  
  @GET  
  @Path("/name/{i}")    
  @Produces(MediaType.TEXT_XML)   
  public String userName(@PathParam("i")  
  String i) throws IOException {  
-	 User user = new User("Gang-Wu");
+	 UserInfo user = new UserInfo("Gang-Wu");
 	 user.init();
      String name = i;  
      return "<User>" + "<Name>" + user.toString() + "</Name>" + "</User>";  
